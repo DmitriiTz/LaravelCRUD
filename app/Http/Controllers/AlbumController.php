@@ -3,62 +3,55 @@
 namespace App\Http\Controllers;
 
 use App\Album;
+use App\Http\Requests\AlbumStoreRequest;
+use App\Http\Requests\AlbumUpdateRequest;
 use Illuminate\Http\Request;
 
 class AlbumController extends Controller
 {
     /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
+     * @return Album[]|\Illuminate\Database\Eloquent\Collection
      */
     public function index()
     {
-        //
+        return Album::all();
     }
 
     /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
+     * @param AlbumStoreRequest $request
+     * @return mixed
      */
-    public function store(Request $request)
+    public function store(AlbumStoreRequest $request)
     {
-        //
+        return Album::create($request->validated());
     }
 
     /**
-     * Display the specified resource.
-     *
-     * @param  \App\Album  $album
-     * @return \Illuminate\Http\Response
+     * @param Album $album
+     * @return Album
      */
     public function show(Album $album)
     {
-        //
+        return $album;
     }
 
     /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Album  $album
-     * @return \Illuminate\Http\Response
+     * @param AlbumUpdateRequest $request
+     * @param Album $album
+     * @return bool
      */
-    public function update(Request $request, Album $album)
+    public function update(AlbumUpdateRequest $request, Album $album)
     {
-        //
+        return $album->update($request->validated());
     }
 
     /**
-     * Remove the specified resource from storage.
-     *
-     * @param  \App\Album  $album
-     * @return \Illuminate\Http\Response
+     * @param Album $album
+     * @return bool|null
+     * @throws \Exception
      */
     public function destroy(Album $album)
     {
-        //
+        return $album->delete();
     }
 }

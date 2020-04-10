@@ -1,9 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="9db3bdd4-80b9-4269-a149-d4fd1fdeeff2" name="Default Changelist" comment="Generation auth files">
-      <change beforePath="$PROJECT_DIR$/.idea/dataSources/6e2ed326-835b-46a8-af39-bd2b787a0791.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources/6e2ed326-835b-46a8-af39-bd2b787a0791.xml" afterDir="false" />
+    <list default="true" id="9db3bdd4-80b9-4269-a149-d4fd1fdeeff2" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/app/Http/Requests/AlbumStoreRequest.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/Http/Requests/AlbumUpdateRequest.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/AlbumController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/AlbumController.php" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -46,11 +48,29 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file pinned="false" current-in-tab="true">
+      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/.env">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="60">
-              <caret line="3" column="14" lean-forward="true" selection-start-line="3" selection-start-column="14" selection-end-line="3" selection-end-column="14" />
+            <state relative-caret-position="289">
+              <caret line="36" column="28" selection-start-line="36" selection-start-column="28" selection-end-line="36" selection-end-column="28" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/app/Http/Controllers/AlbumController.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="-174">
+              <caret line="25" column="52" lean-forward="true" selection-start-line="25" selection-start-column="52" selection-end-line="25" selection-end-column="52" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/app/Http/Requests/AlbumUpdateRequest.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="300">
+              <caret line="15" column="20" selection-start-line="15" selection-start-column="15" selection-end-line="15" selection-end-column="20" />
             </state>
           </provider>
         </entry>
@@ -69,7 +89,6 @@
         <option value="$PROJECT_DIR$/database/migrations/2020_04_09_195638_create_songs_table.php" />
         <option value="$PROJECT_DIR$/database/migrations/2020_04_09_201602_create_artists_table.php" />
         <option value="$PROJECT_DIR$/app/Http/Controllers/SongController.php" />
-        <option value="$PROJECT_DIR$/app/Http/Controllers/AlbumController.php" />
         <option value="$PROJECT_DIR$/app/Http/Controllers/ArtistController.php" />
         <option value="$PROJECT_DIR$/database/seeds/UserSeeder.php" />
         <option value="$PROJECT_DIR$/database/seeds/ArtistSeeder.php" />
@@ -87,6 +106,9 @@
         <option value="$PROJECT_DIR$/app/Album.php" />
         <option value="$PROJECT_DIR$/database/factories/SongFactory.php" />
         <option value="$PROJECT_DIR$/.env" />
+        <option value="$PROJECT_DIR$/.env.example" />
+        <option value="$PROJECT_DIR$/app/Http/Requests/AlbumUpdateRequest.php" />
+        <option value="$PROJECT_DIR$/app/Http/Controllers/AlbumController.php" />
       </list>
     </option>
   </component>
@@ -215,6 +237,31 @@
               <item name="laraCRUD" type="b2602c69:ProjectViewProjectNode" />
               <item name="laraCRUD" type="462c0819:PsiDirectoryNode" />
             </path>
+            <path>
+              <item name="laraCRUD" type="b2602c69:ProjectViewProjectNode" />
+              <item name="laraCRUD" type="462c0819:PsiDirectoryNode" />
+              <item name="app" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="laraCRUD" type="b2602c69:ProjectViewProjectNode" />
+              <item name="laraCRUD" type="462c0819:PsiDirectoryNode" />
+              <item name="app" type="462c0819:PsiDirectoryNode" />
+              <item name="Http" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="laraCRUD" type="b2602c69:ProjectViewProjectNode" />
+              <item name="laraCRUD" type="462c0819:PsiDirectoryNode" />
+              <item name="app" type="462c0819:PsiDirectoryNode" />
+              <item name="Http" type="462c0819:PsiDirectoryNode" />
+              <item name="Controllers" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="laraCRUD" type="b2602c69:ProjectViewProjectNode" />
+              <item name="laraCRUD" type="462c0819:PsiDirectoryNode" />
+              <item name="app" type="462c0819:PsiDirectoryNode" />
+              <item name="Http" type="462c0819:PsiDirectoryNode" />
+              <item name="Requests" type="462c0819:PsiDirectoryNode" />
+            </path>
           </expand>
           <select />
         </subPane>
@@ -226,13 +273,14 @@
     <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="database.console.LAST_STATE" value="false" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/database/seeds" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/app/Http/Requests" />
     <property name="nodejs_interpreter_path.stuck_in_default_project" value="undefined stuck path" />
     <property name="nodejs_npm_path_reset_for_default_project" value="true" />
     <property name="nodejs_package_manager_path" value="npm" />
   </component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\Users\User\laravel\laraCRUD\app\Http\Requests" />
       <recent name="C:\Users\User\laravel\laraCRUD\database\seeds" />
     </key>
   </component>
@@ -265,7 +313,7 @@
       <option name="presentableId" value="Default" />
       <updated>1586452408503</updated>
       <workItem from="1586452409652" duration="601000" />
-      <workItem from="1586454271703" duration="11429000" />
+      <workItem from="1586454271703" duration="13089000" />
     </task>
     <task id="LOCAL-00001" summary="add Media Library">
       <created>1586461184044</created>
@@ -302,15 +350,21 @@
       <option name="project" value="LOCAL" />
       <updated>1586470917894</updated>
     </task>
-    <option name="localTasksCounter" value="6" />
+    <task id="LOCAL-00006" summary="Idea and env.example update">
+      <created>1586471165416</created>
+      <option name="number" value="00006" />
+      <option name="presentableId" value="LOCAL-00006" />
+      <option name="project" value="LOCAL" />
+      <updated>1586471165416</updated>
+    </task>
+    <option name="localTasksCounter" value="7" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="12030000" />
+    <option name="totallyTimeSpent" value="13690000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1936" height="1056" extended-state="6" />
-    <editor active="true" />
     <layout>
       <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.22014925" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
@@ -344,7 +398,8 @@
     <MESSAGE value="Generation auth files" />
     <MESSAGE value="Create models, migrations, controllers, seeders, factories for Users, Artists, Albums, Songs, Users" />
     <MESSAGE value="Add Media-library config file" />
-    <option name="LAST_COMMIT_MESSAGE" value="Add Media-library config file" />
+    <MESSAGE value="Idea and env.example update" />
+    <option name="LAST_COMMIT_MESSAGE" value="Idea and env.example update" />
   </component>
   <component name="editorHistoryManager">
     <entry file="file://$USER_HOME$/Homestead/Homestead.yaml">
@@ -378,13 +433,6 @@
           <folding>
             <element signature="n#style#0;n#head#0;n#html#0;n#!!top" />
           </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/Http/Controllers/AlbumController.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="280">
-          <caret line="39" column="5" selection-start-line="39" selection-start-column="5" selection-end-line="39" selection-end-column="5" />
         </state>
       </provider>
     </entry>
@@ -580,10 +628,34 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/.gitattributes">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/.env.example">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="40">
+          <caret line="2" column="8" lean-forward="true" selection-start-line="2" selection-start-column="8" selection-end-line="2" selection-end-column="8" />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/.env">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="60">
-          <caret line="3" column="14" lean-forward="true" selection-start-line="3" selection-start-column="14" selection-end-line="3" selection-end-column="14" />
+        <state relative-caret-position="289">
+          <caret line="36" column="28" selection-start-line="36" selection-start-column="28" selection-end-line="36" selection-end-column="28" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/Http/Requests/AlbumUpdateRequest.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="300">
+          <caret line="15" column="20" selection-start-line="15" selection-start-column="15" selection-end-line="15" selection-end-column="20" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/Http/Controllers/AlbumController.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-174">
+          <caret line="25" column="52" lean-forward="true" selection-start-line="25" selection-start-column="52" selection-end-line="25" selection-end-column="52" />
         </state>
       </provider>
     </entry>

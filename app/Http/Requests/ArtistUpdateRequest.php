@@ -4,7 +4,7 @@ namespace App\Http\Requests;
 
 use Illuminate\Foundation\Http\FormRequest;
 
-class AlbumStoreRequest extends FormRequest
+class ArtistUpdateRequest extends FormRequest
 {
     /**
      * Determine if the user is authorized to make this request.
@@ -24,10 +24,9 @@ class AlbumStoreRequest extends FormRequest
     public function rules()
     {
         return [
-            'name' => 'required|string',
-            'artist'  => 'required|string',
-            'release'  => 'required|date_format:Y',
-            'cover' => 'required|image',
+            'name' => 'nullable|string',
+            'born'  => 'nullable|date_format:Y',
+            'cover' => 'nullable|image',
         ];
     }
 }

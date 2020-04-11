@@ -2,63 +2,76 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\SongStoreRequest;
+use App\Http\Requests\SongUpdateRequest;
 use App\Song;
-use Illuminate\Http\Request;
+use App\Services\CreateMusicFileService;
+use App\Services\CreateCoverFileService;
 
 class SongController extends Controller
 {
+    protected $create_song;
+    protected $cover;
+
+    public function __construct(CreateMusicFileService $create_song, CreateCoverFileService $cover)
+    {
+        $this->create_song = $create_song;
+        $this->cover = $cover;
+    }
+
     /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
+     * @return Song[]
      */
     public function index()
     {
-        //
+        return Song::all();
     }
 
     /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
+     * @param SongStoreRequest $request
+     * @return Song
      */
-    public function store(Request $request)
+    public function store(SongStoreRequest $request)
     {
-        //
+        $song = Song::create($request->validated());
+        $this->create_song->make($song, $request);
+        $this->cover->make($song, 'song_cover', $request);
+        return $song;
     }
 
     /**
-     * Display the specified resource.
-     *
-     * @param  \App\Song  $song
-     * @return \Illuminate\Http\Response
+     * @param Song $song
+     * @return Song
      */
     public function show(Song $song)
     {
-        //
+        return $song;
     }
 
     /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Song  $song
-     * @return \Illuminate\Http\Response
+     * @param SongUpdateRequest $request
+     * @param Song $song
+     * @return Song
      */
-    public function update(Request $request, Song $song)
+    public function update(SongUpdateRequest $request, Song $song)
     {
-        //
+        $song->update($request->validated());
+        if ($request->hasFile('file')) {
+            $this->create_song->make($song, $request);
+        }
+        if ($request->hasFile('cover')) {
+            $this->cover->make($song, 'song_cover', $request);
+        }
+        return $song;
     }
 
     /**
-     * Remove the specified resource from storage.
-     *
-     * @param  \App\Song  $song
-     * @return \Illuminate\Http\Response
+     * @param Song $song
+     * @return bool|null
+     * @throws \Exception
      */
     public function destroy(Song $song)
     {
-        //
+        return $song->delete();
     }
 }

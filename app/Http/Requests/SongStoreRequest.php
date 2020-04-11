@@ -4,7 +4,7 @@ namespace App\Http\Requests;
 
 use Illuminate\Foundation\Http\FormRequest;
 
-class AlbumStoreRequest extends FormRequest
+class SongStoreRequest extends FormRequest
 {
     /**
      * Determine if the user is authorized to make this request.
@@ -24,9 +24,7 @@ class AlbumStoreRequest extends FormRequest
     public function rules()
     {
         return [
-            'name' => 'required|string',
-            'artist'  => 'required|string',
-            'release'  => 'required|date_format:Y',
+            'file' => 'required|file|mimes:mp3',
             'cover' => 'required|image',
         ];
     }

@@ -3,62 +3,69 @@
 namespace App\Http\Controllers;
 
 use App\Artist;
+use App\Http\Requests\ArtistStoreRequest;
+use App\Http\Requests\ArtistUpdateRequest;
+use App\Services\CreateCoverFileService;
 use Illuminate\Http\Request;
 
 class ArtistController extends Controller
 {
+    protected $cover;
+
+    public function __construct(CreateCoverFileService $cover)
+    {
+        $this->cover = $cover;
+    }
+
     /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
+     * @return Artist[]
      */
     public function index()
     {
-        //
+        return Artist::all();
     }
 
     /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
+     * @param Request $request
+     * @return mixed
      */
-    public function store(Request $request)
+    public function store(ArtistStoreRequest $request)
     {
-        //
+        $artist = Artist::create($request->validated());
+        $this->cover->make($artist, 'artist_cover', $request);
+        return $artist;
     }
 
     /**
-     * Display the specified resource.
-     *
-     * @param  \App\Artist  $artist
-     * @return \Illuminate\Http\Response
+     * @param Artist $artist
+     * @return Artist
      */
     public function show(Artist $artist)
     {
-        //
+        return $artist;
     }
 
     /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Artist  $artist
-     * @return \Illuminate\Http\Response
+     * @param Request $request
+     * @param Artist $artist
+     * @return Artist
      */
-    public function update(Request $request, Artist $artist)
+    public function update(ArtistUpdateRequest $request, Artist $artist)
     {
-        //
+        $artist->update($request->validated());
+        if ($request->hasFile('cover')) {
+            $this->cover->make($artist, 'artist_cover', $request);
+        }
+        return $artist;
     }
 
     /**
-     * Remove the specified resource from storage.
-     *
-     * @param  \App\Artist  $artist
-     * @return \Illuminate\Http\Response
+     * @param Artist $artist
+     * @return bool|null
+     * @throws \Exception
      */
     public function destroy(Artist $artist)
     {
-        //
+        return $artist->delete();
     }
 }

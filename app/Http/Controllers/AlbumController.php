@@ -5,10 +5,17 @@ namespace App\Http\Controllers;
 use App\Album;
 use App\Http\Requests\AlbumStoreRequest;
 use App\Http\Requests\AlbumUpdateRequest;
-use Illuminate\Http\Request;
+use App\Services\CreateCoverFileService;
 
 class AlbumController extends Controller
 {
+    protected $cover;
+
+    public function __construct(CreateCoverFileService $cover)
+    {
+        $this->cover = $cover;
+    }
+
     /**
      * @return Album[]|\Illuminate\Database\Eloquent\Collection
      */
@@ -23,7 +30,9 @@ class AlbumController extends Controller
      */
     public function store(AlbumStoreRequest $request)
     {
-        return Album::create($request->validated());
+        $album = Album::create($request->validated());
+        $this->cover->make($album, 'album_cover', $request);
+        return $album;
     }
 
     /**
@@ -38,11 +47,15 @@ class AlbumController extends Controller
     /**
      * @param AlbumUpdateRequest $request
      * @param Album $album
-     * @return bool
+     * @return Album
      */
     public function update(AlbumUpdateRequest $request, Album $album)
     {
-        return $album->update($request->validated());
+        $album->update($request->validated());
+        if ($request->hasFile('cover')) {
+            $this->cover->make($album, 'album_cover', $request);
+        }
+        return $album;
     }
 
     /**

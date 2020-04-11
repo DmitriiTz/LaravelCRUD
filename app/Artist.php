@@ -4,10 +4,13 @@ namespace App;
 
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
+use Spatie\MediaLibrary\HasMedia;
+use Spatie\MediaLibrary\InteractsWithMedia;
+use Spatie\MediaLibrary\MediaCollections\Models\Media;
 
-class Artist extends Model
+class Artist extends Model implements HasMedia
 {
-    use SoftDeletes;
+    use SoftDeletes, InteractsWithMedia;
 
     protected $fillable = [
         'name',
@@ -27,5 +30,18 @@ class Artist extends Model
     public function albums()
     {
         $this->hasMany(Album::class);
+    }
+
+    public function registerMediaConversions(Media $media = null) : void
+    {
+        $this->addMediaConversion('cover')
+            ->width(400)
+            ->sharpen(10);
+    }
+
+    public function registerMediaCollections(): void
+    {
+        $this->addMediaCollection('artist_cover')
+            ->onlyKeepLatest(1);
     }
 }

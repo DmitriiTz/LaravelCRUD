@@ -24,7 +24,10 @@ class AlbumUpdateRequest extends FormRequest
     public function rules()
     {
         return [
-            //
+            'name' => 'nullable|string',
+            'artist'  => 'nullable|string',
+            'release'  => 'nullable|date_format:Y',
+            'cover' => 'nullable|image',
         ];
     }
 }
